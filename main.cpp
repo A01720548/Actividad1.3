@@ -60,63 +60,11 @@ int BinarySearch(vector<Register> &vect, int x) {
             low = mid + 1;
         }
     }
-
+    retval = mid;
     return retval;
 
 
 }
-
-void JoinHelper(vector<Register> &vect, int start, int mid, int end) {
-    /*
-    Compares halves of elements and switches them if the one on the right is larger
-    It uses an auxiliary vector to perform said switch
-    */ 
-    int i,j,k;
-    i = start;
-    k = start;
-    j = mid + 1;
-    vector<Register> aux(end);
-
-    while(i <=mid && j<=end) {
-        if (vect[i].date <=vect[j].date) {
-            aux[k].date = vect[i].date;
-            k++;
-            i++;
-        } else {
-            aux[k].date = vect[j].date;
-            k++;
-            j++;
-        }
-    }
-    while (i <= mid) {
-        aux[k].date = vect[i].date;
-        k++;
-        i++;
-    }
-    while (j <= end) {
-        aux[k].date = vect[j].date;
-        k++;
-        j++;
-    }
-    for (int x = start; x < k; x++) {
-        vect[x].date = aux[x].date;
-    }
-}
-
-void MergeSort (vector<Register> &vect, int start, int end) {
-    /*
-    Starts by dividing into halves and calling itself along with the join helper function
-    Finishes the recursion until no more halves can be sliced
-    Complexity: O(nlogn)
-    */ 
-    if (start < end) {
-        int mid = (start + end)/2;
-        MergeSort(vect,start,mid);
-        MergeSort(vect,mid+1, end);
-        JoinHelper(vect,start,mid,end);
-    }
-}
-
 
 string convertMonth(string month) { 
 	if (month == "Jun") { return "6"; }
@@ -145,10 +93,11 @@ int main()
     file.close();
 
 
-    //MergeSort(contents,0,contents.size());
     BubbleSort(contents);
 
     string mes, dia, hora, minuto, segundo;
+    cout << "Fecha inicial" << endl;
+
     cout  << "Que mes desea" << endl;
     cin >> mes;
 
@@ -164,22 +113,37 @@ int main()
     cout  << "Que segundo desea" << endl;
     cin >> segundo;
 
+    string mes2, dia2, hora2, minuto2, segundo2;
+    cout << "Fecha final" << endl;
+    
+    cout  << "Que mes desea" << endl;
+    cin >> mes2;
+
+    cout  << "Que dia desea" << endl;
+    cin >> dia2;
+
+    cout  << "Que hora desea" << endl;
+    cin >> hora2;
+
+    cout  << "Que minuto desea" << endl;
+    cin >> minuto2;
+
+    cout  << "Que segundo desea" << endl;
+    cin >> segundo2;
+
     int fechaInicio = stoi(mes+dia+hora+minuto+segundo);
+    int fechaFinal = stoi(mes2+dia2+hora2+minuto2+segundo2);
 
     int posicion = BinarySearch(contents,fechaInicio);
+    int posicionFinal = BinarySearch(contents,fechaFinal);
 
-    cout << contents[posicion].date << "       " << contents[posicion].reg;
 
+    ofstream sorted("sorted.txt", ios::binary);
+        for(int i = posicion; i <= posicionFinal; i++){
+            sorted << contents[i].reg << endl;
+        }
 
-    
-
-    // ofstream sorted("sorted.txt", ios::binary);
-    //     for (vector<Register>::iterator it = contents.begin(); it != contents.end(); it++)
-    //     {
-    //         sorted << *it << endl;
-    //     }
-
-    //     sorted.close();
+        sorted.close();
 
     return 0;
 }
