@@ -34,7 +34,7 @@ string convertMonth(string month) {
 }
 
 int formattedLine(string singleLine) {
-    return stoi(convertMonth(singleLine.substr(0, 2)) + singleLine.substr(4, 5) + singleLine.substr(7, 8) + singleLine.substr(10, 11) + singleLine.substr(13, 14));
+    return stoi(convertMonth(singleLine.substr(0, 3)) + singleLine.substr(4, 2) + singleLine.substr(7, 2) + singleLine.substr(10, 2) + singleLine.substr(13, 2));
 }
 
 
@@ -51,6 +51,8 @@ int main()
     cout << contents.size() << " lines in memory";
 
     file.close();
+
+    cout << contents[0].date << "****" << contents[0].reg << endl;
 
     //ReplaceMonths(contents);
     //sort(contents);
