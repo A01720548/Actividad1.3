@@ -5,12 +5,13 @@
 
 using namespace std;
 
-struct Register
+struct Register // This struct will help us manage the information gathered from the text file
 {
-    int date;
+    int date; //This int is the sum of our concatenation using the formattedLine Method
     string reg;
 };
-Register make_Register(int x, string y) {
+
+Register make_Register(int x, string y) { //This function allows us to create a new instance for every line
     Register newReg = {x, y};
     return newReg;
 };
@@ -66,7 +67,7 @@ int BinarySearch(vector<Register> &vect, int x) {
 
 }
 
-string convertMonth(string month) { 
+string convertMonth(string month) { // This function changes the Text Based Months in the file into the corresponding number
 	if (month == "Jun") { return "6"; }
 	else if (month == "Jul") { return "7"; }
 	else if (month == "Aug") { return "8"; }
@@ -74,7 +75,7 @@ string convertMonth(string month) {
 	else if (month == "Oct") { return "10"; }
 }
 
-int formattedLine(string singleLine) {
+int formattedLine(string singleLine) {  // This method returns an int from the concatenation of every part of the dates
     return stoi(convertMonth(singleLine.substr(0, 3)) + singleLine.substr(4, 2) + singleLine.substr(7, 2) + singleLine.substr(10, 2) + singleLine.substr(13, 2));
 }
 
@@ -95,6 +96,7 @@ int main()
 
     BubbleSort(contents);
 
+    // INPUTS
     string mes, dia, hora, minuto, segundo;
     cout << "Fecha inicial" << endl;
 
@@ -114,7 +116,7 @@ int main()
     cin >> segundo;
 
     string mes2, dia2, hora2, minuto2, segundo2;
-    cout << "Fecha final" << endl;
+    cout << "Fecha Final" << endl;
     
     cout  << "Que mes desea" << endl;
     cin >> mes2;
@@ -138,12 +140,12 @@ int main()
     int posicionFinal = BinarySearch(contents,fechaFinal);
 
 
-    ofstream sorted("sorted.txt", ios::binary);
+    ofstream sorted("result.txt", ios::binary);
         for(int i = posicion; i <= posicionFinal; i++){
-            sorted << contents[i].reg << endl;
+            sorted << contents[i].reg << endl; // Here we output the information for all the events in between our max and min dates
         }
 
-        sorted.close();
+    sorted.close();
 
     return 0;
 }
