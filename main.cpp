@@ -100,37 +100,37 @@ int main()
     string mes, dia, hora, minuto, segundo;
     cout << "Fecha inicial" << endl;
 
-    cout  << "Que mes desea" << endl;
+    cout  << "Que mes desea (numero sin 0 adelante)" << endl;
     cin >> mes;
 
-    cout  << "Que dia desea" << endl;
+    cout  << "Que dia desea (numero con 0 adelante)" << endl;
     cin >> dia;
 
-    cout  << "Que hora desea" << endl;
+    cout  << "Que hora desea (numero con 0 adelante)" << endl;
     cin >> hora;
 
-    cout  << "Que minuto desea" << endl;
+    cout  << "Que minuto desea (numero con 0 adelante)" << endl;
     cin >> minuto;
 
-    cout  << "Que segundo desea" << endl;
+    cout  << "Que segundo desea (numero con 0 adelante)" << endl;
     cin >> segundo;
 
     string mes2, dia2, hora2, minuto2, segundo2;
     cout << "Fecha Final" << endl;
     
-    cout  << "Que mes desea" << endl;
+    cout  << "Que mes desea (numero sin 0 adelante)" << endl;
     cin >> mes2;
 
-    cout  << "Que dia desea" << endl;
+    cout  << "Que dia desea (numero con 0 adelante)" << endl;
     cin >> dia2;
 
-    cout  << "Que hora desea" << endl;
+    cout  << "Que hora desea (numero con 0 adelante)" << endl;
     cin >> hora2;
 
-    cout  << "Que minuto desea" << endl;
+    cout  << "Que minuto desea (numero con 0 adelante)" << endl;
     cin >> minuto2;
 
-    cout  << "Que segundo desea" << endl;
+    cout  << "Que segundo desea (numero con 0 adelante)" << endl;
     cin >> segundo2;
 
     int fechaInicio = stoi(mes+dia+hora+minuto+segundo);
